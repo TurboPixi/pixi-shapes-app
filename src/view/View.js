@@ -27,7 +27,7 @@ export default class View {
         this.app.stage.buttonMode = true;
 
         // Init ticker
-        this.app.ticker.add(delta => this.animateFalling(delta));
+        // this.app.ticker.add(delta => this.animateFalling(delta));
     }
 
     showShapesQuantity() {

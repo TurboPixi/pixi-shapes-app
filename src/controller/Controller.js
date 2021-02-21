@@ -74,7 +74,7 @@ export default class Controller {
         // Gravity controls
         const decGravityBtn = getElementById('dec-gravity-btn');
         const incGravityBtn = getElementById('inc-gravity-btn')
-        
+
         // Shapes per second control
         const decShapesBtn = getElementById('dec-shapes-btn');
         const incShapesBtn = getElementById('inc-shapes-btn');
@@ -110,13 +110,16 @@ export default class Controller {
         const shape = this.model.getRandomShape(pos);
 
         // Remove shape on click
-        shape.on('pointerdown', (e) => this.handleRemoveShape(e))
+        shape.on('pointerdown', (e) => {
+            e.stopPropagation();
+	        // this.handleRemoveShape(e)
+        });
 
         // Render new shapes
         this.view.renderShapes([shape]);
     }
 
-    
+
     createShapes() {
         const { state } = this.model;
         const shapesList = [];
@@ -146,7 +149,7 @@ export default class Controller {
         this.view.updateGravity(state.gravity)
         this.view.init();
         this.addListeners();
-        this.createShapes();
-        this.spawnShapes()
+        // this.createShapes();
+        // this.spawnShapes()
     }
 }
